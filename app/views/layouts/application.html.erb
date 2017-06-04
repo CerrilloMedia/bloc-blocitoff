@@ -2,13 +2,39 @@
 <html>
 <head>
   <title>Blocitoff</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li><%= link_to "my lists", root_url %></li>
+      <li><%= link_to "sign out", root_url %></li>
+      <li><%= link_to "new list", root_url %></li>
+      <!--<div class="pull-right user-info">-->
+        <li class="pull-right"><a href="#">USER INFO & STATUS</a></li>
+      <!--</div>-->
+    </ul>
+    <!-- Flash Notices & Alerts -->
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
+      </div>
+    <% elsif flash[:alert] %>
+      <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+  
+    <%= yield %>
+    
+    <div id="footer">
+      
+    </div>
+  </div>
 </body>
 </html>
