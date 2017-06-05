@@ -16,3 +16,6 @@
 !/log/.keep
 /tmp
 tasks.md
+
+# Ignore application configuration
+/config/application.yml
