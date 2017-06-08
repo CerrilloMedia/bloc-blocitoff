@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="well panel-default col-md-12">
+                <div class="panel-body">
+                    <h4>Dashboard for: <%= current_user.email %></h4>
+                    <p>Let's see what you've accomplished this week</p>
+                </div>
+                <div class="panel-footer">
+                    <%= link_to edit_user_registration_path, class: 'text-muted', title: 'edit user info' do %>
+                        <span class="glyphicon glyphicon-edit" title="Edit User Info"></span><span class="view-on-hover"> edit info</span>
+                    <% end %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-4">
+                    <div class="well panel-default">
+                        <div class="panel-heading">
+                            <h4>Total Lists</h4>
+                        </div>
+                        <div class="panel-body">25</div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-4">
+                    <div class="well panel-default">
+                        <div class="panel-heading">
+                            <h4>Completed</h4>
+                        </div>
+                        <div class="panel-body">189</div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-4">
+                    <div class="well panel-default">
+                        <div class="panel-heading">
+                            <h4>Expired</h4>
+                        </div>
+                        <div class="panel-body">23</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
