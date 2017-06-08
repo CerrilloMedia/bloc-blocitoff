@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   get 'users/:id' => 'users#show', as: 'user'
   
   # redirect invalid paths to root
-  get '*path' => redirect('/')
+  # get '*path' => redirect('/')
 
 end
