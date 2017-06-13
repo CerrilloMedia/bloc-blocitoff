@@ -4,11 +4,10 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show], path: 'user' do
     resources :lists, only: [:index]
-    post '/lists' => 'lists#create'
+    post 'lists' => 'lists#create'
     
     resources :lists, except: [:index], path: 'list'
   end
-  
   
   # redirect invalid paths to root
   get '*path' => redirect('/')
