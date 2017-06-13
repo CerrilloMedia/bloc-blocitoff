@@ -74,6 +74,47 @@ body {
     }
 }
 
+.panel-list-heading {
+    color: #fff !important;
+}
+
+.panel-body {
+    padding: 10px !important;
+    padding: 3px auto !important;
+}
+
+.well {
+    margin: .5em !important;
+    padding: .5em !important;
+}
+
+.task-footer {
+        font-size: .8em;
+    margin-left: .5em;
+    opacity: .7;
+}
+
+.panel-heading {
+    background: rgb(232, 112, 54) !important;
+    border-color: #944824 !important;
+    color: #fff;
+}
+
+.panel-body-separator {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: none;
+    border-top: 1px solid rgba(232, 112, 54, 0.5);
+}
+
+.completed-task {
+    color: rgba(0,0,0,.5);
+}
+
+.glyphicon-check:hover,
+.glyphicon-unchecked:hover {
+    cursor: pointer;
+}
 
 @media screen and (min-width: 48em) {
     .text-xs-left { text-align: left; }

@@ -12,31 +12,49 @@
                             <span class="glyphicon glyphicon-edit" title="Edit User Info"></span><span class="view-on-hover"> edit info</span>
                         <% end %>
                     <% end %>
+                    <div class="panel-body">
+                        Create a new list:
+                    </div>
+                    <div class="panel-body">
+                        <%= render partial: 'lists/form', locals: { user: @user, list: @list.new, type: 'new ', button: 'Create List' } %>
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-6 col-sm-4">
+                <div class="col-xs-12 col-sm-6">
                     <div class="well panel-default">
-                        <div class="panel-heading">
-                            <h4>Total Lists</h4>
-                        </div>
-                        <div class="panel-body">25</div>
+                            <div class="text-center">
+                                <% if @user == current_user %>
+                                    <%= link_to user_lists_path(@user) do %>
+                                        <h4>Lists</h4>
+                                    <% end %>
+                                <% else %>
+                                        <h4>Lists</h4>
+                                <% end %>
+                            </div>
+                            <div class="row panel-footer">
+                                <div class="panel-body col-xs-6 col-sm-12">
+                                    Completed: <%= @completed_lists.size %>
+                                </div>
+                                <div class="panel-body col-xs-6 col-sm-12">
+                                    Total: <%= @user.lists.size %>
+                                </div>
+                            </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-sm-4">
+                <div class="col-xs-12 col-sm-6">
                     <div class="well panel-default">
-                        <div class="panel-heading">
-                            <h4>Completed</h4>
+                        <div class="text-center">
+                            <h4>Tasks</h4>
                         </div>
-                        <div class="panel-body">189</div>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-4">
-                    <div class="well panel-default">
-                        <div class="panel-heading">
-                            <h4>Expired</h4>
+                        <div class="row panel-footer">
+                            <div class="panel-body col-xs-6 col-sm-12">
+                                Total: 189
+                            </div>
+                            <div class="panel-body col-xs-6 col-sm-12">
+                                Completed: 123
+                            </div>
                         </div>
-                        <div class="panel-body">23</div>
                     </div>
                 </div>
             </div>

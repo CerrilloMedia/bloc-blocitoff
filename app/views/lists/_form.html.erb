@@ -1,0 +1,12 @@
+<div class="input-group col-sm-12 col-xs-12">
+    <%= form_for [user, list], html: {class: 'col-xs-12'} do |f| %>
+        <div class="row">
+            <div class="col-xs-12 col-sm-8">
+                <%= f.text_field :title, class: 'form-control pull-left', placeholder: "#{type}title" %>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <%= submit_tag button, class: 'btn col-xs-12' %>
+            </div>
+        </div>
+    <% end %>
+</div>

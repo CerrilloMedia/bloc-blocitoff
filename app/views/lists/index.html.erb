@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-default">
+            <div class="well">
+                Current Lists for: <%= @user.email %>
+            </div>
+            <div class="panel-body">
+                <%= render partial: 'form', locals: { user: @user, list: List.new, type: 'new ', button: 'Create List' } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="panel-list panel panel-default">
+                <div class="panel-heading panel-list-heading">
+                    <%= pluralize(@user.lists.count, "list") %>
+                </div>
+                    <% @lists.each do |list| %>
+                            <hr class="panel-body-separator" />
+                            <div class="panel-body">
+                                <% if current_user == @user %>
+                                    <span class="col-xs-1 pull-left">
+                                        <%= link_to "edit", edit_user_list_path(@user, list.id) %>
+                                    </span>
+                                    <span class="col-xs-10">
+                                <% else %>
+                                    <span class="col-xs-11">
+                                <% end %>
+                                    <span <% if list.completed %>"completed-task"<% end %> >
+                                        <%= link_to [@user,list] do %>
+                                            <%= list.title %>
+                                        <% end %>
+                                    </span><br>
+                                    <%= render partial: 'timestamp', locals: { list: list } %>
+                                </span>
+                                <span class="col-xs-1">
+                                    <% if list.completed %>
+                                    <span class="pull-right glyphicon glyphicon-check" title="completed"></span>
+                                    <% else %>
+                                    <span class="pull-right glyphicon glyphicon-unchecked" title="in progress"></span>
+                                    <% end %>
+                                </span>
+                            </div>
+                    <% end %>
+                <div class="panel-footer"></div>
+        </div>
+    </div>
+</div>
+        

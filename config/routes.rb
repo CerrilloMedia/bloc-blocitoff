@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
-  
-  root 'welcome#index'
-  
+
   devise_for :users
   
-  # Since Devise has it's own Users methods we need to set the `users/:id` route to our own UsersController to display as users#show method/view
-  get 'users/:id' => 'users#show', as: 'user'
+  resources :users, only: [:show], path: 'user' do
+    resources :lists, only: [:index]
+    post '/lists' => 'lists#create'
+    
+    resources :lists, except: [:index], path: 'list'
+  end
+  
   
   # redirect invalid paths to root
-  # get '*path' => redirect('/')
+  get '*path' => redirect('/')
 
+  root 'welcome#index'
 end

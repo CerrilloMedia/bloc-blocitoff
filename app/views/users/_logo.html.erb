@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+    <%= link_to user_lists_path, class: 'navbar-brand', title: 'Dashboard' do %>
+        <div class="brand-logo">
+            <%= image_tag('logo.svg') %>
+        </div>
+        <div>Bloccitoff</div>
+    <% end %>
+<% else %>
+    <%= link_to root_path, class: 'navbar-brand', title: 'Bloccitoff' do %>
+        <div class="brand-logo">
+            <%= image_tag('logo.svg') %>
+        </div>
+        <div>Bloccitoff</div>
+    <% end %>
+<% end %>

@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <h4>user: <%= User.find(params[:user_id]).email %> / list #<%= params[:id] %></h4>
+        <p>Find me in app/views/lists/show.html.erb</p>
+        <br>
+        <div class="col-xs-12">
+            <%= params %>
+        </div>
+    </div>
+</div>
+
