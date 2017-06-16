@@ -1,59 +1,57 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm-12">
-            <div class="well panel-default col-md-12">
+        <div class="panel col-md-10 col-md-offset-1">
+            <div class="">
                 <div class="panel-body">
-                    <h4>Dashboard for: <%= @user.email %></h4>
-                    <p>Let's see what you've accomplished this week</p>
-                </div>
-                <div class="panel-footer">
-                    <% if current_user == @user %>
-                        <%= link_to edit_user_registration_path, class: 'text-muted', title: 'edit user info' do %>
-                            <span class="glyphicon glyphicon-edit" title="Edit User Info"></span><span class="view-on-hover"> edit info</span>
+                    <h4 class="">Dashboard for: 
+                        <% if current_user == @user %>
+                            <%= link_to edit_user_registration_path, class: 'text-muted nounderline', title: 'edit user info' do %>
+                                <%= @user.email %>
+                                <span class="glyphicon glyphicon-edit" title="Edit User Info"></span><span class="view-on-hover"></span>
+                            <% end %>
+                        <% else %>
+                            <%= @user.email %>
                         <% end %>
-                    <% end %>
-                    <div class="panel-body">
-                        Create a new list:
-                    </div>
-                    <div class="panel-body">
-                        <%= render partial: 'lists/form', locals: { user: @user, list: @lists.new, type: 'new ', button: 'Create List' } %>
+                    </h4>
+                    <p class="col-xs-12">Let's see what you've accomplished this week</p>
+                </div>
+                <div class="panel-body-separator"></div>
+                <div class="panel-body">
+                    <div class="col-sm-8 col-md-6">
+                        <div class="panel-body">
+                            <%= render partial: 'form', locals: { user: @user, list: @lists.new, type: 'New', button: 'Create' } %>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="panel-body">
                 <div class="col-xs-12 col-sm-6">
-                    <div class="well panel-default">
-                            <div class="text-center">
+                    <div class="well">
+                            <div class="">
+                                <h4>
                                 <% if @user == current_user %>
-                                    <%= link_to user_lists_path(@user) do %>
-                                        <h4>Lists</h4>
+                                    <%= link_to user_lists_path(@user), class: 'nounderline', title: 'Go to lists' do %>
+                                        Lists
                                     <% end %>
                                 <% else %>
-                                        <h4>Lists</h4>
+                                        Lists
                                 <% end %>
-                            </div>
-                            <div class="row panel-footer">
-                                <div class="panel-body col-xs-6 col-sm-12">
-                                    Completed: <%= @completed_lists.size %>
-                                </div>
-                                <div class="panel-body col-xs-6 col-sm-12">
-                                    Total: <%= @user.lists.size %>
-                                </div>
+                                <span class="badge btn-lg badge-warning">
+                                    completed <%= @completed_lists.size %> of <%= @lists.size %>
+                                </span>
+                                </h4>
                             </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
-                    <div class="well panel-default">
-                        <div class="text-center">
-                            <h4>Tasks</h4>
-                        </div>
-                        <div class="row panel-footer">
-                            <div class="panel-body col-xs-6 col-sm-12">
-                                Total: 189
-                            </div>
-                            <div class="panel-body col-xs-6 col-sm-12">
-                                Completed: 123
-                            </div>
+                    <div class="well">
+                        <div class="">
+                            <h4>
+                                Tasks
+                            <span class="badge">
+                                123 of 189
+                            </span>
+                            </h4>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,20 @@
+<% items.each do |item| %>
+        <hr class="panel-body-separator" />
+        <div class="panel-body app-item-body">
+            <% if current_user == user %>
+                <span class="col-xs-1 pull-left">
+                    <%= link_to edit_item_path(item.id) do %>
+                        <span class="glyphicon glyphicon-edit" title="edit task"></span>
+                    <% end %>
+                </span>
+                <span class="col-xs-10">
+            <% else %>
+                <span class="col-xs-11">
+            <% end %>
+                <%= item.body %>
+                </span>
+            <%= link_to item, { method: :delete, title: 'delete task' } do %>
+                <span class="glyphicon glyphicon-remove pull-right text-danger"></span>
+            <% end %>
+        </div>
+<% end %>

@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-
+  
   devise_for :users
   
-  resources :users, only: [:show], path: 'user' do
-    resources :lists, only: [:index]
-    post 'lists' => 'lists#create'
-    
-    resources :lists, except: [:index], path: 'list'
+  resources :users, only: [:show] do
+    resources :lists, shallow: true do
+      resources :items, only: [:create, :edit, :update, :destroy]
+    end
   end
   
   # redirect invalid paths to root

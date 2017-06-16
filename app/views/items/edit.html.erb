@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading panel-list-heading">
+                edit to-do
+            </div>
+            <div class="panel-body">
+                <%= form_for @item, html: {class: 'col-xs-12' } do |f| %>
+                        <div class="input-group col-xs-12">
+                            <%= f.text_field :body, class: 'form-control pull-left', placeholder: "new to-do" %>
+                            <span class="input-group-btn">
+                                <%= submit_tag "update", class: 'btn btn-secondary btn-success' %>
+                            </span>
+                        </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

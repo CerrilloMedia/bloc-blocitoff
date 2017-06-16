@@ -98,6 +98,12 @@ body {
     background: rgb(232, 112, 54) !important;
     border-color: #944824 !important;
     color: #fff;
+    a {
+        color: #fff;
+    }
+    a:hover {
+        text-decoration:none;
+    }
 }
 
 .panel-body-separator {
@@ -109,6 +115,10 @@ body {
 
 .completed-task {
     color: rgba(0,0,0,.5);
+}
+
+.nounderline:hover {
+    text-decoration: none;
 }
 
 .glyphicon-check:hover,

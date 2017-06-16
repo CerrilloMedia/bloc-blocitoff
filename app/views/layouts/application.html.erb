@@ -25,7 +25,7 @@
               <ul class="nav navbar-nav navbar-left">
               <% if user_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to new_user_list_path(current_user.id) do %>
+                  <%= link_to user_lists_path(current_user.id) do %>
                     <span class="glyphicon glyphicon-edit" title="New To-do list"></span> Create New List
                   <% end %>
                 </li>
