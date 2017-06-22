@@ -38,6 +38,7 @@ class ItemsController < ApplicationController
       end
       
     elsif authorize_user?(@list.user_id)
+      @item.update_attributes(item_params)
       if @item.save
         flash[:notice] = "item updated successfully."
       else
