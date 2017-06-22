@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   
   # redirect invalid paths to root
-  get '*path' => redirect('/')
+  # get '*path' => redirect('/')
 
   root 'welcome#index'
 end

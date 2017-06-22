@@ -1,6 +1,5 @@
 <% items.each do |item| %>
-        <hr class="panel-body-separator" />
-        <div class="panel-body app-item-body">
+        <div id="item-<%= item.id %>" class="panel-body app-item-body panel-body-separator">
             <% if current_user == user %>
                 <span class="col-xs-1 pull-left">
                     <%= link_to edit_item_path(item.id) do %>
@@ -11,10 +10,24 @@
             <% else %>
                 <span class="col-xs-11">
             <% end %>
-                <%= item.body %>
+                    <div class="item-body" data-item-id="<%= item.id %>">
+                        <%= item.body %><br>
+                        <%= render partial: 'layouts/timestamp', locals: { type: item } %>
+                    </div>
                 </span>
-            <%= link_to item, { method: :delete, title: 'delete task' } do %>
-                <span class="glyphicon glyphicon-remove pull-right text-danger"></span>
-            <% end %>
+                
+            <div id="item-tools-<%= item.id %>" class="col-xs-12 col-sm-1">
+                <%= link_to item_path(item: {id: item.id, request_type: 'toggle_completed'}), { remote: true, method: :put, class: 'col-xs-6 text-center' } do %>
+                    <% if item.completed? %>
+                        <span class="glyphicon glyphicon-check" title="uncheck"></span>
+                    <% else %>
+                        <span class="glyphicon glyphicon-unchecked" title="check-off"></span>
+                    <% end %>
+                <% end %>
+                
+                <%= link_to item, { remote: true, method: :delete, title: 'delete task', class: 'col-xs-6 text-center', data: {confirm: "Are you sure you would like to delete this task?"} } do %>
+                    <span class="glyphicon glyphicon-remove text-danger"></span>
+                <% end %>
+            </div>
         </div>
 <% end %>

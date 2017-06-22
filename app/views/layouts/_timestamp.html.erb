@@ -1,0 +1,7 @@
+<span class="completed-task task-footer">
+    <% if type.created_at == type.updated_at %>
+        created on: <%= type.created_at %>
+    <% else %>
+        updated on: <%= type.updated_at %>
+    <% end %>
+</span>

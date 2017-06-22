@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   def create
     @list = List.find(params[:list_id])
     @item = @list.items.new(item_params)
+    @item.user = User.find(@list.user_id)
     
     if authorize_user?(@list.user_id) && @item.save
       flash[:notice] = "item added."
@@ -17,31 +18,73 @@ class ItemsController < ApplicationController
   end
   
   def update
-    @item = Item.find(params[:id])
-    @item.update_attributes(item_params)
-    @list = List.find(@item.list_id)
     
-    if authorize_user?(@list.user_id) && @item.save
-      flash[:notice] = "item successfully updated."
-    else
-      flash[:alert] = "Error updating item. Please try again."
+    @item = params[:item]['request_type'] == 'toggle_completed' ? Item.find(Item.find(params[:item][:id])) : Item.find(Item.find(params[:id]))
+    
+    @list  = List.find(@item.list_id)
+    
+    # to properly pass in variables to update.js.erb partial
+    @items = @list.items.order('completed, updated_at DESC')
+    @user  = User.find(@item.user_id)
+    
+    if params[:item]['request_type'] == 'toggle_completed' && authorize_user?(@list.user_id)
+      
+      toggle_completed
+      
+      respond_to do |format|
+        if @item.save
+          format.js { render layout: false }
+        end
+      end
+      
+    elsif authorize_user?(@list.user_id)
+      if @item.save
+        flash[:notice] = "item updated successfully."
+      else
+        flash[:alert] = "item updated successfully."
+      end
+      redirect_to @list
     end
-    
-    redirect_to @list
     
   end
   
   def destroy
+    
     @item = Item.find(params[:id])
     @list = List.find(@item.list_id)
     
-    if authorize_user?(@list.user_id) && @item.delete
-      flash[:notice] = "Task successfully deleted."
-    else
-      flash[:alert] = "Unable to remove task. Please try again."
-    end
-    redirect_to @list
+    @user = User.find(@item.user_id)
+    @items = @list.items
     
+    respond_to do |format|
+      
+      if authorize_user?(@list.user_id) && @item.delete
+        format.js
+        format.html { flash[:notice] = "Task successfully deleted." }
+      else
+        format.html { redirect_to @list, alert: "Unable to remove task. Please try again." }
+      end
+    
+    end
+    
+  end
+  
+  def toggle_completed
+    
+    @item = Item.find(params[:item][:id])
+    
+    # toggle the attribute
+    @item.completed = !@item.completed
+    
+    # if complete, set competed_at timestamp
+    if @item.completed?
+        @item.completed_at = Time.now
+    else
+        @item.completed_at = nil
+    end
+    
+    #set updated_at timestamp
+    @item.updated_at = Time.now
   end
   
   def authorize_user?(id)

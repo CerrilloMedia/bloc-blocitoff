@@ -20,7 +20,7 @@
                     <div class="panel-heading panel-list-heading">
                         <%= pluralize(@user.lists.count, "lists") %> in progress
                     </div>
-                    <%= render partial: 'listings', locals: {user: @user, lists: @lists } %>
+                    <%= render partial: 'lists', locals: {user: @user, lists: @lists } %>
                     <div class="panel-footer"></div>
             </div>
         </div>

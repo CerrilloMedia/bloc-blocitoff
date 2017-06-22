@@ -6,12 +6,13 @@
             </div>
             <div class="panel-body">
                 <%= form_for @item, html: {class: 'col-xs-12' } do |f| %>
-                        <div class="input-group col-xs-12">
-                            <%= f.text_field :body, class: 'form-control pull-left', placeholder: "new to-do" %>
-                            <span class="input-group-btn">
-                                <%= submit_tag "update", class: 'btn btn-secondary btn-success' %>
-                            </span>
-                        </div>
+                    <div class="input-group col-xs-12">
+                        <%= f.text_field :body, class: 'form-control pull-left', placeholder: "#{@item[:body]}", autofocus: true %>
+                        <span class="input-group-btn">
+                            <%= submit_tag "update", class: 'btn btn-secondary btn-success' %>
+                            <%= link_to "cancel", list_path(@item.list_id), class: 'btn btn-danger' %>
+                        </span>
+                    </div>
                 <% end %>
             </div>
         </div>

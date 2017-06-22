@@ -9,7 +9,9 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @user = User.find(@list.user_id)
-    @items = @list.items.order('updated_at DESC')
+    
+    @items = @list.items.order('completed ASC, updated_at DESC')
+    
     @completed = List.where('user_id = ? AND completed = ?', params[:user_id], true)
   end
 
@@ -63,7 +65,6 @@ class ListsController < ApplicationController
     redirect_to list_path
     # 
   end
-  
   
   private
   
