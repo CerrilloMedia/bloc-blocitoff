@@ -18,6 +18,9 @@ source 'https://rubygems.org'
     gem 'shoulda'
     
     gem 'factory_girl_rails', '~> 4.0'
+    
+    # Use Faker for create fake user data
+    gem 'faker'
  end
  
  # Use SCSS for stylesheets

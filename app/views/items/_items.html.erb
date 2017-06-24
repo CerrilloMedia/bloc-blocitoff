@@ -15,7 +15,6 @@
                         <%= render partial: 'layouts/timestamp', locals: { type: item } %>
                     </div>
                 </span>
-                
             <div id="item-tools-<%= item.id %>" class="col-xs-12 col-sm-1">
                 <%= link_to item_path(item: {id: item.id, request_type: 'toggle_completed'}), { remote: true, method: :put, class: 'col-xs-6 text-center' } do %>
                     <% if item.completed? %>

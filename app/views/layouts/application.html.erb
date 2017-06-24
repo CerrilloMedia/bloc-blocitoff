@@ -24,18 +24,18 @@
       <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav navbar-left">
               <% if user_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to user_lists_path(current_user.id) do %>
-                    <span class="glyphicon glyphicon-edit" title="New To-do list"></span> Create New List
-                  <% end %>
-                </li>
+                  <li class="nav-item">
+                    <%= link_to new_user_list_path(current_user.id) do %>
+                      <span class="glyphicon glyphicon-edit" title="New To-do list"></span> Create New List
+                    <% end %>
+                  </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item">
                       <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
                     </li>
                     <li class="nav-item text-xs-left" title="View Profile">
-                      <%= link_to current_user, class: 'nav-link' do %>
+                      <%= link_to edit_user_registration_path, class: 'nav-link' do %>
                         Signed in as: <strong><%= current_user.email %></strong>
                       <% end %>
                     </li>

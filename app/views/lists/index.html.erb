@@ -2,12 +2,12 @@
     <div class="row">
         <div class="panel col-sm-8 col-sm-offset-2 col-lg-8 col-lg-offset-2">
             <div class="panel-body">
-                    Current Lists for: <%= @user.email %>
+                    Current Lists for: <strong><%= @user.email %></strong>
             </div>
             <span class="panel-body-separator"></span>
             <div class="panel-body">
                 <div class="col-xs-12">
-                    <%= render partial: 'newlist', locals: { user: @user, list: List.new, type: 'new ', button: 'Create List' } %>
+                    <%= render partial: 'newlist', locals: { user: @user, list: List.new, type: 'new', button: '+' } %>
                 </div>
             </div>
             </div>
@@ -17,10 +17,12 @@
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
             <div class="panel-list panel panel-default">
-                    <div class="panel-heading panel-list-heading">
-                        <%= pluralize(@user.lists.count, "lists") %> in progress
+                    <div id="lists-quantity" class="panel-heading panel-list-heading">
+                        <%= pluralize(@user.lists.count, "list") %> in progress
                     </div>
-                    <%= render partial: 'lists', locals: {user: @user, lists: @lists } %>
+                    <div id="lists">
+                        <%= render partial: 'lists', locals: {user: @user, lists: @lists } %>
+                    </div>
                     <div class="panel-footer"></div>
             </div>
         </div>

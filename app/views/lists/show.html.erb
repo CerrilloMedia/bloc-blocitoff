@@ -7,7 +7,7 @@
         <% else %>
                 <%= link_to edit_list_path(@list), class: 'nounderline', title: 'edit list title' do %>
                     <strong><%= @list.title %></strong>
-                    <span class="glyphicon glyphicon-edit"></span>
+                    <span class="glyphicon glyphicon-edit btn-sm"></span>
                 <% end %>
         <% end %>
         <% if current_user != @user %><br>

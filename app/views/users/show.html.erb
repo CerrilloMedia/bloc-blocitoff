@@ -19,7 +19,7 @@
                 <div class="panel-body">
                     <div class="col-sm-8 col-md-6">
                         <div class="panel-body">
-                            <%= render partial: 'form', locals: { user: @user, list: @lists.new, type: 'New', button: 'Create' } %>
+                            <%= render partial: 'lists/newlist', locals: { user: @user, list: List.new, type: 'New', button: 'Create' } %>
                         </div>
                     </div>
                 </div>
@@ -36,9 +36,9 @@
                                 <% else %>
                                         Lists
                                 <% end %>
-                                <span class="badge btn-lg badge-warning">
-                                    completed <%= @completed_lists.size %> of <%= @lists.size %>
-                                </span>
+                                        <span class="badge btn-lg badge-warning">
+                                            completed <%= @completed_lists.size %> of <%= @lists.size %>
+                                        </span>
                                 </h4>
                             </div>
                     </div>
@@ -48,9 +48,9 @@
                         <div class="">
                             <h4>
                                 Tasks
-                            <span class="badge">
-                                123 of 189
-                            </span>
+                                <span class="badge btn-lg badge-warning">
+                                    completed <%= @completed_items.size %> of <%= @items.size %>
+                                </span>
                             </h4>
                         </div>
                     </div>

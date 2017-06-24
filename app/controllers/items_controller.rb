@@ -19,15 +19,13 @@ class ItemsController < ApplicationController
   
   def update
     
-    @item = params[:item]['request_type'] == 'toggle_completed' ? Item.find(Item.find(params[:item][:id])) : Item.find(Item.find(params[:id]))
+    @item = params[:item]['request_type'] == 'toggle_completed' ? Item.find(params[:item][:id]) : Item.find(params[:id])
     
-    @list  = List.find(@item.list_id)
-    
-    # to properly pass in variables to update.js.erb partial
-    @items = @list.items.order('completed, updated_at DESC')
+    # to properly pass in variables to the _items partial within update.js.erb
+    @items = Item.where('list_id = ?', @item.list_id).order('completed, updated_at DESC')
     @user  = User.find(@item.user_id)
     
-    if params[:item]['request_type'] == 'toggle_completed' && authorize_user?(@list.user_id)
+    if params[:item]['request_type'] == 'toggle_completed' && authorize_user?(@item.user_id)
       
       toggle_completed
       
@@ -37,14 +35,14 @@ class ItemsController < ApplicationController
         end
       end
       
-    elsif authorize_user?(@list.user_id)
+    elsif authorize_user?(@user.id)
       @item.update_attributes(item_params)
       if @item.save
         flash[:notice] = "item updated successfully."
       else
         flash[:alert] = "item updated successfully."
       end
-      redirect_to @list
+      redirect_to list_path(@item.list_id)
     end
     
   end
@@ -54,8 +52,8 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @list = List.find(@item.list_id)
     
-    @user = User.find(@item.user_id)
-    @items = @list.items
+    @user = User.find(@list.user_id)
+    @items = Item.where('list_id = ?', @item.list_id)
     
     respond_to do |format|
       

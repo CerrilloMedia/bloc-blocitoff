@@ -1,0 +1,2 @@
+$("#list-<%= @list.id %>").remove();
+$('#lists-quantity').html('<%= pluralize(@lists.count, "list") %> in progress');

@@ -1,2 +1,2 @@
 $("#item-<%= @item.id %>").remove();
-$('#items-quantity').html('<%= @items.size %> items');
+$('#items-quantity').html('<%= pluralize(@items.count, "item") %>');

@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-    <%= link_to user_lists_path(current_user.id), class: 'navbar-brand', title: 'Dashboard' do %>
+    <%= link_to user_path(current_user.id), class: 'navbar-brand', title: 'Dashboard' do %>
         <div class="brand-logo">
             <%= image_tag('logo.svg') %>
         </div>

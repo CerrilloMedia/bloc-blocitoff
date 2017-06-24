@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
-  # include UsersHelper
   
   def show
       @user = User.find(params[:id])
       # can_access?(@user)
-      @lists = @user.lists
-      @completed_lists = @user.lists.where('completed = ?', true)
+      @lists = List.where('user_id = ?', @user.id)
+      @completed_lists = @lists.where('completed = ?', true)
+      
+      @items = Item.where('user_id = ?', @user.id)
+      @completed_items = @items.where('completed = ?', true)
   end
   
 end
