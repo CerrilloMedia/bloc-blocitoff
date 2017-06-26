@@ -3,8 +3,6 @@ module ApplicationHelper
     def expiration(item)
         date = item.created_at
         expiration = "expires in"
-        css_level = 'text-muted'
-        ago = ''
         
         case 
             when date <= 7.days.ago
@@ -17,6 +15,8 @@ module ApplicationHelper
                 css_level = 'text-warning'
             when date < 3.day.ago
                 css_level = 'text-info'
+            when date < 2.day.ago
+                css_level = 'text-muted'
             end
             
         "<span class=\"col-xs-6 #{css_level} text-xs-left text-right\">
