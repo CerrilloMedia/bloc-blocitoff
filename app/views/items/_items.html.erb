@@ -16,17 +16,20 @@
                     </div>
                 </span>
             <div id="item-tools-<%= item.id %>" class="col-xs-12 col-sm-1">
-                <%= link_to item_path(item: {id: item.id, request_type: 'toggle_completed'}), { remote: true, method: :put, class: 'col-xs-6 text-center' } do %>
-                    <% if item.completed? %>
-                        <span class="glyphicon glyphicon-check" title="uncheck"></span>
-                    <% else %>
-                        <span class="glyphicon glyphicon-unchecked" title="check-off"></span>
+                <span class='col-xs-6 text-center'>
+                    <%= link_to item_path(item: {id: item.id, request_type: 'toggle_completed'}), { remote: true, method: :put } do %>
+                        <% if item.completed? %>
+                            <span class="glyphicon glyphicon-check" title="uncheck"></span>
+                        <% else %>
+                            <span class="glyphicon glyphicon-unchecked" title="check-off"></span>
+                        <% end %>
                     <% end %>
-                <% end %>
-                
-                <%= link_to item, { remote: true, method: :delete, title: 'delete task', class: 'col-xs-6 text-center', data: {confirm: "Are you sure you would like to delete this task?"} } do %>
-                    <span class="glyphicon glyphicon-remove text-danger"></span>
-                <% end %>
+                </span>
+                <span class='col-xs-6 text-center'>
+                    <%= link_to item, { remote: true, method: :delete, title: 'delete task', data: {confirm: "Are you sure you would like to delete this task?"} } do %>
+                        <span class="glyphicon glyphicon-remove text-danger"></span>
+                    <% end %>
+                </span>
             </div>
         </div>
 <% end %>
