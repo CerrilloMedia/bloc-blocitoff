@@ -14,7 +14,7 @@
 <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
     <div class="panel-list panel panel-default">
             <div id="lists-quantity" class="panel-heading panel-list-heading">
-                <%= pluralize(@user.lists.count, "list") %> in progress
+                <span class="test"><%= pluralize(@user.lists.count, "list") %></span>
             </div>
             <div id="lists">
                 <%= render partial: 'lists', locals: {user: @user, lists: @lists } %>

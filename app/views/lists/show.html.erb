@@ -1,28 +1,30 @@
-
-    <div class="col-sm-8 col-sm-offset-2">
-        <div class="panel panel-default">
-            <div class="panel-heading panel-list-heading text-center">
-        <% if current_user != @user %>
+<div class="col-sm-8 col-sm-offset-2">
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix panel-list-heading text-center">
+            <%= link_to user_lists_path(@user), class:"test", title: 'return to lists' do %>
+                <span class="glyphicon glyphicon-circle-arrow-left"></span>
+            <% end %>
+    <% if current_user != @user %>
+            <strong><%= @list.title %></strong>
+    <% else %>
                 <strong><%= @list.title %></strong>
-        <% else %>
-                <%= link_to edit_list_path(@list), class: 'nounderline', title: 'edit list title' do %>
-                    <strong><%= @list.title %></strong>
-                    <span class="glyphicon glyphicon-edit btn-sm"></span>
-                <% end %>
-        <% end %>
-        <% if current_user != @user %><br>
-                <small>author: <%= @user.email %></small>
-        <% end %>
-            </div>
-            <%= render partial: 'items/form', locals: { list: @list } %>
+            <%= link_to edit_list_path(@list), class: 'nounderline', title: 'edit list title' do %>
+                <span class="glyphicon glyphicon-edit btn-sm"></span>
+            <% end %>
+    <% end %>
+    <% if current_user != @user %><br>
+            <small>author: <%= @user.email %></small>
+    <% end %>
         </div>
-    <div class="panel">
-        <div id="items-quantity" class="panel-heading panel-list-heading">
-            <%= @items.size %> items
-        </div>
-        <div id="items">
-            <%= render partial: 'items/items', locals: { user: @user, items: @items } %>
-        </div>
+        <%= render partial: 'items/form', locals: { list: @list } %>
     </div>
-    <br>
+<div class="panel">
+    <div id="items-quantity" class="panel-heading panel-list-heading">
+        <%= @items.size %> items
     </div>
+    <div id="items">
+        <%= render partial: 'items/items', locals: { user: @user, items: @items } %>
+    </div>
+</div>
+<br>
+</div>

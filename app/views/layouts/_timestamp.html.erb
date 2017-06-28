@@ -1,5 +1,5 @@
 <span class="<%= 'completed-task' if type.completed %> task-footer col-xs-12">
-    <span class="col-sm-6 timestamp-footer pull-left">
+    <span class="col-sm-6 col-xs-12 timestamp-footer pull-left">
         <% if type.completed %>
             completed on: <%= format_datetime(type) %>
         <% elsif type.created_at == type.updated_at %>
@@ -8,7 +8,7 @@
             updated on: <%= format_datetime(type) %>
         <% end %>
     </span>
-    <% if type.is_a?(Item) || type.completed.nil? %>
+    <% if type.is_a?(Item) && !type.completed %>
         <%= expiration(type) %>
     <% end %>
 </span>

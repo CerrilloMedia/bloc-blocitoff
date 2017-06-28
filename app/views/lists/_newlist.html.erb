@@ -4,6 +4,9 @@
             <%= f.text_field :title, class: 'form-control pull-left', placeholder: "#{type} title", autofocus: true %>
             <span class="input-group-btn">
                 <%= submit_tag button, class: 'btn btn-secondary btn-success' %>
+                <% if type == 'update ' %>
+                    <%= link_to "cancel", :back, class: 'btn btn-danger' %>
+                <% end %>
             </span>
         </div>
     </div>
