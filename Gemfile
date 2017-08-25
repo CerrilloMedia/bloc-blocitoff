@@ -34,7 +34,7 @@ source 'https://rubygems.org'
  # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
  gem 'turbolinks'
  # bootstrap-sass
- gem 'bootstrap-sass'
+ gem 'bootstrap-sass' 
  # Devise
  gem 'devise'
  # Figaro
