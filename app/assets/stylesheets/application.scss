@@ -16,9 +16,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$grey: #777;
+
 // Devise users#edit
 body {
     background-color: #ecf0f1;
+}
+
+.grey-bg {
+    background: $grey;
 }
 
 .jumbotron {
@@ -133,6 +139,23 @@ body {
 .glyphicon-check:hover,
 .glyphicon-unchecked:hover {
     cursor: pointer;
+}
+
+input[id='list_title'] {
+    background: rgba(255,255,255,.3);
+    border: none;
+}
+
+input[id='list_title']::-webkit-input-placeholder
+// input[id='list_title']:-moz-input-placeholder,
+// input[id='list_title']::-moz-input-placeholder,
+// input[id='list_title']:-ms-input-placeholder
+{
+    color: white !important;
+}
+
+input[id='list_title']:focus {
+    background: white;
 }
 
 @media screen and (max-width: 575px) {

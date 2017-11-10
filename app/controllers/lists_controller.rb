@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   
   def index
     @user = User.find(params[:user_id])
-    @lists = @user.lists.order('updated_at DESC')
+    @lists = @user.lists.order(completed_at: :asc, created_at: :desc)
   end
 
   def show
