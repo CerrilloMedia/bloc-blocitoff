@@ -1,8 +1,17 @@
 <% lists.each do |list| %>
         <div id="list-<%= list.id %>" class="panel-body panel-body-separator">
             <% if current_user == user %>
-                <span class="col-xs-1 pull-left lead text-center h-50">
-                    <%= list.items.size %>
+                <span class="col-xs-1 pull-left lead text-center">
+                    
+                    <span class="text-center nounderline">
+                        <%= link_to list_path(id: list.id, request_type: 'toggle_completed'), { remote: true, method: :put } do %>
+                            <% if list.completed? %>
+                                <span class="glyphicon glyphicon-check" title="completed"></span>
+                            <% else %>
+                                <span class="glyphicon glyphicon-unchecked" title="in progress"></span>
+                            <% end %>
+                        <% end %>
+                    </span>
                 </span>
                 <span class="col-xs-10">
             <% else %>
@@ -15,21 +24,13 @@
                 </span><br>
                 <%= render partial: 'layouts/timestamp', locals: { type: list } %>
             </span>
-            <div id="list-tools-<%= list.id %>" class="col-xs-12 col-sm-1">
-                <span class="col-xs-6 text-center nounderline">
-                    <%= link_to list_path(id: list.id, request_type: 'toggle_completed'), { remote: true, method: :put } do %>
-                        <% if list.completed? %>
-                            <span class="glyphicon glyphicon-check" title="completed"></span>
-                        <% else %>
-                            <span class="glyphicon glyphicon-unchecked" title="in progress"></span>
-                        <% end %>
-                    <% end %>
-                </span>
-                <span class="col-xs-6 text-center">
+            <div id="list-tools-<%= list.id %>" class="col-xs-1 col-sm-1">
+                <span class="text-center">
                     <%= link_to list, { remote: true, method: :delete, title: 'delete list', data: { confirm: "Are you sure you would like to delete this list?" } } do %>
                         <span class="glyphicon glyphicon-remove text-danger"></span>
                     <% end %>
                 </span>
             </div>
+        <div class="completion-bg" style='width:<%= completed(list) %>%;'></div>
         </div>
 <% end %>

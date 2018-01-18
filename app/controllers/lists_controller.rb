@@ -34,8 +34,16 @@ class ListsController < ApplicationController
       @list = @user.lists.new(list_params)
       
       if @list.save
-        flash[:notice] = "list [ #{ @list.title } ] created successfully."
-        redirect_to list_path(@list.id)
+        respond_to do |format|
+          format.html {
+            flash[:notice] = "list [ #{ @list.title } ] created successfully."
+            redirect_to @list
+          }
+          format.js { 
+            render layout: false
+            redirect_to @list
+          }
+        end
         return
       else
         flash[:alert] = "Error creating list. Please try again."

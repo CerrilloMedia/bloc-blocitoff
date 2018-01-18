@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="panel col-md-10 col-md-offset-1">
             <div class="panel-body">
@@ -20,7 +20,7 @@
                     <% end %>
                 </div>
                 <div class="panel-body col-xs-12 col-sm-6">
-                    <div class="grey-bg">
+                    <div class="grey-bg row">
                         <div class="panel-body">
                             <%= render partial: 'lists/newlist', locals: { user: @user, list: List.new, type: 'New', button: 'Create' } %>
                         </div>
