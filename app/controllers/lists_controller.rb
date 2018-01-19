@@ -37,12 +37,11 @@ class ListsController < ApplicationController
         respond_to do |format|
           format.html {
             flash[:notice] = "list [ #{ @list.title } ] created successfully."
-            redirect_to @list
           }
           format.js { 
             render layout: false
-            redirect_to @list
           }
+          redirect_to @list
         end
         return
       else
@@ -113,7 +112,7 @@ class ListsController < ApplicationController
     if authorize_user?(@list.user_id)
       respond_to do |format|
         if @list.delete
-          format.js
+          format.js { render layout: false }
           format.html { flash[:notice] = "List successfully deleted." }
         else
           format.html { redirect_to user_lists_path, alert: "Unable to remove task. Please try agian." }

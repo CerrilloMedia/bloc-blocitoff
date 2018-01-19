@@ -7,6 +7,8 @@ class List < ActiveRecord::Base
   
   before_create :limit_reached
   
+   default_scope { order('completed, created_at DESC') }
+  
   def set_defaults
     self.completed = false if self.completed.nil?
   end
@@ -15,6 +17,10 @@ class List < ActiveRecord::Base
     if user != User.find_by_email('armando@cerrillomedia.org')
       user.lists.size > 3 ? false : true
     end
+  end
+  
+  def compelted_lists
+    
   end
   
 end

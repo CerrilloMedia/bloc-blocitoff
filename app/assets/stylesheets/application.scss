@@ -121,7 +121,7 @@ body {
     margin-top: 0px;
     margin-bottom: 0px;
     border: none;
-    border-top: 1px solid rgba(232, 112, 54, 0.5);
+    border-top: 1px solid rgba(96, 160, 160, 0.9);
 }
 
 .completed-task {
@@ -135,11 +135,11 @@ body {
 .completion-bg {
     position: absolute;
     height: 100%;
-    background: #60a0a0;
+    background: rgba(96, 160, 160, 0.1);
     top: 0;
     left: 0;
     z-index: 0;
-    opacity: .1;
+    // box-shadow: inset 0px -1px 0px rgba(96, 160, 160, 0.9);
 }
 
 #lists .panel-body {
