@@ -33,10 +33,8 @@ class ListsController < ApplicationController
       
       @list = @user.lists.new(list_params)
       if @list.save
-        format.html {
           flash[:notice] = "list created successfully."
           redirect_to @list
-        }
       else
         flash[:alert] = "Error creating list. Please try again."
       end
@@ -99,15 +97,13 @@ class ListsController < ApplicationController
     
     @lists = List.where('user_id = ?', @list.user_id)
     
-    puts @list.user
-    
     if authorize_user?(@list.user_id)
       respond_to do |format|
         if @list.delete
           format.js { render layout: false }
           format.html { flash[:notice] = "List successfully deleted." }
         else
-          format.html { redirect_to user_lists_path, alert: "Unable to remove task. Please try agian." }
+          format.html { redirect_to @list.user, alert: "Unable to remove task. Please try agian." }
         end
       end
     else
