@@ -1,9 +1,9 @@
 <% lists.each do |list| %>
         <div id="list-<%= list.id %>" class="panel-body panel-body-separator">
             <% if current_user == user %>
-                <span class="col-xs-1 pull-left lead text-center">
+                <div class="col-xs-1 pull-left lead text-center">
                     
-                    <span class="text-center nounderline">
+                    <div class="text-center nounderline">
                         <%= link_to list_path(id: list.id, request_type: 'toggle_completed'), { remote: true, method: :put } do %>
                             <% if list.completed? %>
                                 <span class="glyphicon glyphicon-check" title="completed"></span>
@@ -11,20 +11,21 @@
                                 <span class="glyphicon glyphicon-unchecked" title="in progress"></span>
                             <% end %>
                         <% end %>
-                    </span>
-                </span>
-                <span class="col-xs-10">
+                    </div>
+                </div>
+                <div class="col-xs-10 list-entry">
             <% else %>
-                <span class="col-xs-11">
+                <div class="col-xs-11 list-entry">
             <% end %>
+            
                 <span class="<%= 'completed-task' if list.completed %>">
                     <%= link_to list, class: 'nounderline' do %>
                         <%= list.title %>
                     <% end %>
                 </span><br>
                 <%= render partial: 'layouts/timestamp', locals: { type: list } %>
-            </span>
-            <div id="list-tools-<%= list.id %>" class="col-xs-1 col-sm-1">
+            </div>
+            <div id="list-tools-<%= list.id %>" class="col-xs-1">
                 <span class="text-center">
                     <%= link_to list, { remote: true, method: :delete, title: 'delete list', data: { confirm: "Are you sure you would like to delete this list?" } } do %>
                         <span class="glyphicon glyphicon-remove text-danger"></span>

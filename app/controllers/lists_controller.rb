@@ -36,7 +36,7 @@ class ListsController < ApplicationController
       if @list.save
         respond_to do |format|
           format.html {
-            flash[:notice] = "list [ #{ @list.title } ] created successfully."
+            flash[:notice] = "list created successfully."
           }
           format.js { 
             render layout: false
@@ -108,6 +108,8 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     
     @lists = List.where('user_id = ?', @list.user_id)
+    
+    puts @list.user
     
     if authorize_user?(@list.user_id)
       respond_to do |format|

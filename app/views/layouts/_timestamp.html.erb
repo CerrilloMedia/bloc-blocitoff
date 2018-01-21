@@ -1,5 +1,5 @@
-<span class="<%= 'completed-task' if type.completed %> task-footer col-xs-12">
-    <span class="timestamp-footer pull-left">
+<span class="<%= 'completed-task' if type.completed %> task-footer">
+    <span class="timestamp-footer">
         <% if type.completed %>
             completed on: <%= format_datetime(type) %>
         <% elsif type.created_at == type.updated_at %>

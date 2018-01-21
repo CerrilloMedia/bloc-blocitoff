@@ -1,7 +1,7 @@
-<%= form_for [user,list], html: {class: 'col-xs-12'} do |f| %>
-    <div class="">
+<%= form_for [user,list], html: {class: ''} do |f| %>
+    
         <div class="input-group col-xs-12"> 
-            <%= f.text_field :title, class: 'form-control text-center', placeholder: "#{type} list title", autofocus: false %>
+            <%= f.text_field :title, class: 'form-control text-center', placeholder: "#{type}list title", autofocus: autofocus %>
             <span class="input-group-btn">
                 <%= submit_tag button, class: 'btn btn-secondary btn-success' %>
                 <% if type == 'update ' %>
@@ -9,5 +9,5 @@
                 <% end %>
             </span>
         </div>
-    </div>
+    
 <% end %>
