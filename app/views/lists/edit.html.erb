@@ -5,7 +5,7 @@
                     Editing: <i><strong><%= @list.title %></strong></i>
                 </div>
                 <div class="panel-body">
-                    <%= render partial: 'newlist', locals: { user: nil, list: @list, type: 'update ', button: 'Update' } %>
+                    <%= render partial: 'newlist', locals: { user: nil, list: @list, type: 'update ', button: 'Update', autofocus: "true" } %>
                 </div>
             </div>
     </div>

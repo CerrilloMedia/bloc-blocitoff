@@ -22,28 +22,34 @@
             <div class="panel-body">
                 <div class="col-xs-12 col-sm-6">
                     <div class="panel-heading">
+                        <%= link_to user_lists_path(@user), class: 'btn btn-success pull-right' do %>
+                            all lists
+                        <% end %>
                         <span class="">
-                            <%= link_to user_lists_path(@user) do %>
-                                Lists
-                            <% end %>
+                            Top 5 completed lists<br>
+                            <span class="small">completed <%= @completed_lists.size %> of <%= @lists.size %></span>
                         </span>
-                        <span class="small pull-right">completed <%= @completed_lists.size %> of <%= @lists.size %></span>
+                        <span class="small pull-right">
+                        
+                        </span>
                     </div>
                     
                     <ul class="list-group">
                         
                     <% @user.completed_lists.take(5).each do | list | %>
-                        <li class="list-group-item">
-                            <span class="small"><%= list.title %></span>
-                        </li>
+                        <%= link_to list, class: 'nounderline' do %>
+                            <li class="list-group-item">
+                                <span class="small"><%= list.title %></span>
+                            </li>
+                        <% end %>
                     <% end %>
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <div class="panel-heading">
-                        <span class="">Items
+                        <span class="">Items<br>
+                            <span class="small">completed <%= @completed_items.size %> of <%= @items.size %></span>
                         </span>
-                        <span class="small pull-right">completed <%= @completed_items.size %> of <%= @items.size %></span>
                     </div>
                     
                     <ul class="list-group">

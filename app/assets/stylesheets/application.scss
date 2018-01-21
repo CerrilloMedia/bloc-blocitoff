@@ -208,6 +208,10 @@ input[id='list_title']:focus {
 }
 
 @media screen and (max-width: 575px) {
+    input {
+        font-size: 16px;
+    }
+    
     .text-xs-left { text-align: left !important; }
     .text-xs-right { text-align: right !important; }
     .text-xs-center { text-align: center !important; }

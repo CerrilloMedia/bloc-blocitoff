@@ -32,27 +32,17 @@ class ListsController < ApplicationController
     if authorize_user?(@user.id)
       
       @list = @user.lists.new(list_params)
-      
       if @list.save
-        respond_to do |format|
-          format.html {
-            flash[:notice] = "list created successfully."
-          }
-          format.js { 
-            render layout: false
-          }
+        format.html {
+          flash[:notice] = "list created successfully."
           redirect_to @list
-        end
-        return
+        }
       else
         flash[:alert] = "Error creating list. Please try again."
       end
-      
     else
       flash[:alert] = "You are not authorized for such an action."
     end
-    
-    redirect_to current_user
     
   end
   
@@ -61,7 +51,7 @@ class ListsController < ApplicationController
     
     unless authorize_user?(@list.user_id)
       flash[:alert] = "You are not authorized to edit this title."
-      redirect_to current_user
+      redirect_to @list
     end
     
   end
@@ -70,7 +60,7 @@ class ListsController < ApplicationController
     
     @list = List.find(params[:id])
     
-    @user = User.find(@list.user_id)
+    @user = @list.user
     @lists = @user.lists.order('completed, updated_at DESC')
     
     if authorize_user?(@user.id)

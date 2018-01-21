@@ -12,7 +12,7 @@
                 <%= render partial: 'lists', locals: {user: @user, lists: @lists } %>
             </div>
             <div class="panel-body new-list-footer">
-                <%= render partial: 'newlist', locals: { user: @user, list: List.new, type: '', button: '+', autofocus: true } %>
+                <%= render partial: 'newlist', locals: { user: @user, list: List.new, type: 'new ', button: '+', autofocus: true } %>
             </div>
             <div class="panel-footer"></div>
     </div>
