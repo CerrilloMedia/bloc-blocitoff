@@ -1,3 +1,4 @@
-$("#list-<%= @list.id %>").remove();
-$('#lists-quantity .panel-body').html('<%= pluralize(@lists.count, "list") %> for <%= @list.user.email %>');
-$('#list_title').focus();
+
+  $("#list-<%= @list.id %>").remove();
+  $('#lists-quantity .panel-body').html('<%= pluralize(@lists.count, "list") %> for <%= @list.user.email %>');
+  $('#list_title').focus();
