@@ -59,7 +59,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     
     @user = @list.user
-    @lists = @user.lists.order('completed, updated_at DESC')
+    # @lists = @user.lists.order('completed, updated_at DESC')
     
     if authorize_user?(@user.id)
     
@@ -99,7 +99,7 @@ class ListsController < ApplicationController
     
     if authorize_user?(@list.user_id)
       respond_to do |format|
-        if @list.delete
+        if @list.destroy
           format.js { render layout: false }
           format.html { flash[:notice] = "List successfully deleted." }
         else
