@@ -59,7 +59,6 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     
     @user = @list.user
-    # @lists = @user.lists.order('completed, updated_at DESC')
     
     if authorize_user?(@user.id)
     
@@ -69,10 +68,16 @@ class ListsController < ApplicationController
           
           respond_to do |format|
             if @list.save
-              format.js { render layout: false }
+              format.js {
+                render layout: false
+              }
+              format.html {
+                redirect_to @user.lists
+              }
             end
-            return
           end
+          
+          return
           
       else
         @list.update_attributes(list_params)

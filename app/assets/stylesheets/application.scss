@@ -27,6 +27,15 @@ body {
     background-color: #ecf0f1;
 }
 
+.text-danger {
+    color: $gold;
+}
+
+.icon-outline {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #60a0a0;
+}
+
 .grey-bg {
     background: $grey;
 }
