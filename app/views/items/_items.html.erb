@@ -1,32 +1,30 @@
 <% items.each do |item| %>
         <div id="item-<%= item.id %>" class="panel-body app-item-body panel-body-separator">
             <% if current_user == user %>
-                <span class="col-xs-1 pull-left">
-                    <%= link_to edit_item_path(item.id) do %>
-                        <span class="glyphicon glyphicon-edit" title="edit task"></span>
-                    <% end %>
-                </span>
-                <span class="col-xs-10">
-            <% else %>
-                <span class="col-xs-11">
-            <% end %>
-                    <div class="item-body" data-item-id="<%= item.id %>">
-                        <%= item.body %><br>
-                        <%= render partial: 'layouts/timestamp', locals: { type: item } %>
-                    </div>
-                </span>
-            <div id="item-tools-<%= item.id %>" class="col-xs-12 col-sm-1">
-                <span class='col-xs-6 text-center'>
-                    <%= link_to item_path(item: {id: item.id, request_type: 'toggle_completed'}), { remote: true, method: :put } do %>
-                        <% if item.completed? %>
-                            <span class="glyphicon glyphicon-check" title="uncheck"></span>
-                        <% else %>
-                            <span class="glyphicon glyphicon-unchecked" title="check-off"></span>
+                <div class="col-xs-1 pull-left text-center">
+                    
+                    <div class="text-center nounderline">
+                        <%= link_to item_path(item: {id: item.id, request_type: 'toggle_completed'}), { remote: true, method: :put } do %>
+                            <% if item.completed? %>
+                                <span class="glyphicon glyphicon-check" title="uncheck"></span>
+                            <% else %>
+                                <span class="glyphicon glyphicon-unchecked" title="check-off"></span>
+                            <% end %>
                         <% end %>
-                    <% end %>
-                </span>
-                <span class='col-xs-6 text-center'>
-                    <%= link_to item, { remote: true, method: :delete, title: 'delete task', data: {confirm: "Are you sure you would like to delete this task?"} } do %>
+                    </div>
+                </div>
+                <div class="col-xs-10 entry">
+            <% else %>
+                <div class="col-xs-11 entry">
+            <% end %>
+                    <span class="<%= 'completed-task' if item.completed %>">
+                        <span class="nounderline"><%= item.body %></span>
+                    </span><br>
+                    <%= render partial: 'layouts/timestamp', locals: { type: item } %>
+                </div>
+            <div id="item-tools-<%= item.id %>" class="col-xs-1">
+                <span class='text-center'>
+                    <%= link_to item, { remote: true, method: :delete, title: 'delete task', data: {confirm: "Are you sure you would like to delete this item?"} } do %>
                         <span class="glyphicon glyphicon-remove text-danger icon-outline"></span>
                     <% end %>
                 </span>

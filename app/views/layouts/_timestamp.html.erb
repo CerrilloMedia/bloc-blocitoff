@@ -9,6 +9,8 @@
         <% end %>
     </span>
     <% if type.is_a?(Item) && !type.completed %>
-        <%= expiration(type) %>
+        <span class="pull-right">
+            <%= expiration(type) %>
+        </span>
     <% end %>
 </span>

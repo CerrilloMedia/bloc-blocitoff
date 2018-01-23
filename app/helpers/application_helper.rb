@@ -17,9 +17,9 @@ module ApplicationHelper
                 css_level = 'text-info'
             when date < 2.day.ago
                 css_level = 'text-muted'
-            end
+        end
             
-        "<span class=\"col-xs-6 #{css_level} text-xs-left text-right\">
+        "<span class=\"#{css_level}\">
             #{expiration}: <strong >#{distance_of_time_in_words(date + 7.day, Time.zone.now)}#{ago}</strong>
         </span>".html_safe
     end

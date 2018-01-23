@@ -1,5 +1,5 @@
 <div class="col-sm-8 col-sm-offset-2">
-    <div class="panel panel-default">
+    <div class="panel-list panel panel-default">
         <div class="panel-heading clearfix panel-list-heading text-center">
             <div class="col-xs-1">
                 <%= link_to user_lists_path(@user), class:"back-arrow", title: 'return to lists' do %>
@@ -17,20 +17,18 @@
                     <span class="glyphicon glyphicon-edit"></span>
                 <% end %>
             </div>
-    <% end %>
-    <% if current_user != @user %><br>
-            <small>author: <%= @user.email %></small>
+    <% else %>
+        <br>
+        <small>author: <%= @user.email %></small>
     <% end %>
         </div>
         <%= render partial: 'items/form', locals: { list: @list } %>
-    </div>
-<div class="panel">
     <div id="items-quantity" class="panel-heading panel-list-heading">
         <%= @items.size %> items
     </div>
-    <div id="items">
+    <div id="items" class="lead">
         <%= render partial: 'items/items', locals: { user: @user, items: @items } %>
     </div>
-</div>
+    </div>    
 <br>
 </div>

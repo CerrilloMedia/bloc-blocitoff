@@ -1,5 +1,5 @@
 <div class="panel-body">
-    <%= form_for [list, Item.new] do |f| %>
+    <%= form_for [list, list.items.new], remote: true do |f| %>
         <div class="input-group col-xs-12">
             <%= f.text_field :body, class: 'form-control pull-left', placeholder: "new to-do", autofocus: true %>
             <span class="input-group-btn">

@@ -13,18 +13,17 @@
                         <% end %>
                     </div>
                 </div>
-                <div class="col-xs-10 list-entry">
+                <div class="col-xs-10 entry">
             <% else %>
-                <div class="col-xs-11 list-entry">
+                <div class="col-xs-11 entry">
             <% end %>
-            
-                <span class="<%= 'completed-task' if list.completed %>">
-                    <%= link_to list, class: 'nounderline' do %>
-                      <%= list.title %>
-                    <% end %>
-                </span><br>
+                    <span class="<%= 'completed-task' if list.completed %>">
+                        <%= link_to list, class: 'nounderline' do %>
+                          <%= list.title %>
+                        <% end %>
+                    </span><br>
                 <%= render partial: 'layouts/timestamp', locals: { type: list } %>
-            </div>
+                </div>
             <div id="list-tools-<%= list.id %>" class="col-xs-1">
                 <span class="text-center">
                     <%= link_to list, { remote: true, method: :delete, title: 'delete list', data: { confirm: "Are you sure you would like to delete this list?" } } do %>

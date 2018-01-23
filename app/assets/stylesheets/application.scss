@@ -157,10 +157,10 @@ body {
     position: relative;
 }
 
-.item-body * {
-    margin: 0 !important;
-    padding: 0 !important;
-}
+// .item-body * {
+//     margin: 0 !important;
+//     padding: 0 !important;
+// }
 
 .task-footer {
     font-size: .8em;
@@ -262,7 +262,7 @@ input[id='list_title']:focus {
     .panel-body {
         padding: 5px !important;
     }
-    .list-entry {
+    .entry {
         padding-left: 1em;
     }
 }

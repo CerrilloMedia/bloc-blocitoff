@@ -6,7 +6,11 @@ class ItemsController < ApplicationController
     @item.user = User.find(@list.user_id)
     
     if authorize_user?(@list.user_id) && @item.save
-      flash[:notice] = "item added."
+      respond_to do |format|
+        format.js
+        format.html { flash[:notice] = "item added." }
+      end
+      return
     else
       flash[:alert] = "unable to add item. Please try again."
     end
@@ -52,13 +56,13 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @list = List.find(@item.list_id)
     
-    @user = User.find(@list.user_id)
+    @user = @list.user
     @items = Item.where('list_id = ?', @item.list_id)
     
     respond_to do |format|
       
       if authorize_user?(@list.user_id) && @item.delete
-        format.js
+        format.js { render layout: false }
         format.html { flash[:notice] = "Task successfully deleted." }
       else
         format.html { redirect_to @list, alert: "Unable to remove task. Please try again." }

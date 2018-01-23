@@ -1,2 +1,2 @@
-$("#item-<%= @item.id %>").remove();
+$("#items").html('<%= j render partial: "items/items", locals: { user: @user, items: @items } %>');
 $('#items-quantity').html('<%= pluralize(@items.count, "item") %>');
