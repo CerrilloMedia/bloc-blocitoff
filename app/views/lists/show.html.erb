@@ -24,7 +24,7 @@
         </div>
         <%= render partial: 'items/form', locals: { list: @list } %>
     <div id="items-quantity" class="panel-heading panel-list-heading">
-        <%= @items.size %> items
+        <%= pluralize(@items.size, 'item') %>
     </div>
     <div id="items" class="lead">
         <%= render partial: 'items/items', locals: { user: @user, items: @items } %>

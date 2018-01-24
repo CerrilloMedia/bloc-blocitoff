@@ -1,10 +1,10 @@
 <% lists.each do |list| %>
         <div id="list-<%= list.id %>" class="panel-body panel-body-separator">
-            <% if current_user == user %>
+            <% if current_user == list.user %>
                 <div class="col-xs-1 pull-left text-center">
                     
                     <div class="text-center nounderline">
-                        <%= link_to list_path(id: list.id, request_type: 'toggle_completed'), { remote: true, method: :patch } do %>
+                        <%= link_to list_path(id: list.id, request_type: 'toggle_completed'), remote: true, method: :patch do %>
                             <% if list.completed? %>
                                 <span class="glyphicon glyphicon-check" title="completed"></span>
                             <% else %>

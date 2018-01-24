@@ -139,10 +139,6 @@ class ListsController < ApplicationController
     
   end
   
-  def authorize_user?(id)
-    current_user.id == id
-  end
-  
   def list_params
     params.require(:list).permit(:title, :user_id)
   end

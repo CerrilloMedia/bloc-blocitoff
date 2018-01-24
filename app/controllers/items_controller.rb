@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     
     if authorize_user?(@list.user_id) && @item.save
       respond_to do |format|
-        format.js
+        format.js { render layout: false }
         format.html { flash[:notice] = "item added." }
       end
       return
@@ -22,31 +22,32 @@ class ItemsController < ApplicationController
   end
   
   def update
-    
-    @item = params[:item]['request_type'] == 'toggle_completed' ? Item.find(params[:item][:id]) : Item.find(params[:id])
+    @item = Item.find(params[:id])
     
     # to properly pass in variables to the _items partial within update.js.erb
-    @items = Item.where('list_id = ?', @item.list_id).order('completed, updated_at DESC')
-    @user  = User.find(@item.user_id)
+    @items = Item.where('list_id = ?', @item.list_id)
+    @user  = @item.user
     
-    if params[:item]['request_type'] == 'toggle_completed' && authorize_user?(@item.user_id)
+    if authorize_user?(@item.user_id)
       
-      toggle_completed
+      if params['request_type'] == 'toggle_completed'
+        
+        toggle_completed
       
-      respond_to do |format|
-        if @item.save
-          format.js { render layout: false }
+        respond_to do |format|
+          if @item.save
+            format.js { render layout: false }
+          end
         end
-      end
-      
-    elsif authorize_user?(@user.id)
-      @item.update_attributes(item_params)
-      if @item.save
-        flash[:notice] = "item updated successfully."
       else
-        flash[:alert] = "item updated successfully."
+        @item.update_attributes(item_params)
+        if @item.save
+          flash[:notice] = "item updated successfully."
+        else
+          flash[:alert] = "item updated successfully."
+        end
+        redirect_to list_path(@item.list_id)
       end
-      redirect_to list_path(@item.list_id)
     end
     
   end
@@ -74,7 +75,7 @@ class ItemsController < ApplicationController
   
   def toggle_completed
     
-    @item = Item.find(params[:item][:id])
+    @item = Item.find(params[:id])
     
     # toggle the attribute
     @item.completed = !@item.completed
@@ -88,10 +89,6 @@ class ItemsController < ApplicationController
     
     #set updated_at timestamp
     @item.updated_at = Time.now
-  end
-  
-  def authorize_user?(id)
-    current_user.id == id
   end
   
   private
