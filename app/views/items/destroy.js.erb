@@ -1,3 +1,5 @@
-$("#items").html('<%= j render partial: "items/items", locals: { user: @user, items: @items } %>');
-$('#items-quantity').html('<%= pluralize(@items.count, "item") %>');
-$('#item_body').val('');
+$('#item-<%= @item.id %>').animate( { opacity: 'hide', left: '-=80%', height: '-20%' }, 200, function() {
+    $("#items").html('<%= j render partial: "items/items", locals: { user: @user, items: @items } %>');
+    $('#items-quantity').html('<%= pluralize(@items.count, "item") %>');
+    $('#item_body').val('');
+});

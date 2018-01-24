@@ -1,7 +1,7 @@
 <% items.each do |item| %>
         <div id="item-<%= item.id %>" class="panel-body app-item-body panel-body-separator">
             <% if current_user == user %>
-                <div class="col-xs-1 pull-left text-center">
+                <div class="col-xs-1 pull-left text-center checkbox">
                     
                     <div class="text-center nounderline">
                         <%= link_to item_path(id: item.id, request_type: 'toggle_completed'), remote: true, method: :patch do %>
@@ -22,9 +22,9 @@
                     </span><br>
                     <%= render partial: 'layouts/timestamp', locals: { type: item } %>
                 </div>
-            <div id="item-tools-<%= item.id %>" class="col-xs-1">
+            <div id="item-tools-<%= item.id %>" class="col-xs-1 checkbox">
                 <span class='text-center'>
-                    <%= link_to item, { remote: true, method: :delete, title: 'delete task', data: {confirm: "Are you sure you would like to delete this item?"} } do %>
+                    <%= link_to item, { remote: true, method: :delete, title: 'delete task', data: 'deleted' } do %>
                         <span class="glyphicon glyphicon-remove text-danger icon-outline"></span>
                     <% end %>
                 </span>

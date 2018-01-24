@@ -25,6 +25,7 @@ $gold: #F4E04D;
 // Devise users#edit
 body {
     background-color: #ecf0f1;
+    font-weight: 300;
 }
 
 .text-danger {
@@ -197,10 +198,14 @@ input[id='list_title']:focus {
     background: white;
 }
 
+div[id^='item-'] {
+    position: relative;
+}
+
 // List#index
 
 .new-list-footer {
-    background: $teal;
+    background: #afd1d1;
     .input-group .form-control:first-child {
         border-bottom-left-radius: 0;
         border-top-left-radius: 0;
@@ -214,6 +219,16 @@ input[id='list_title']:focus {
     input[id="list_title"] {
         text-align: left;
     }
+}
+
+.list-panel {
+    background: none !important;
+    border: none;
+}
+
+.list-task {
+    margin: .5em auto .5em !important;
+    background: #fff;
 }
 
 @media screen and (max-width: 575px) {

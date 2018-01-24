@@ -16,3 +16,13 @@
 //= require bootstrap
 //= require_tree .
 
+
+$(document).on('turbolinks:load', function() {
+  $(".lists.index").ready( function() {
+    $('.completion-bg').each(function() {
+        var percentage = $(this).data('percentage');
+        $(this).animate({ width: percentage }, 200);
+    });
+  });
+  
+});
