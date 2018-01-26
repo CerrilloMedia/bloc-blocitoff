@@ -36,6 +36,6 @@ source 'https://rubygems.org'
  # bootstrap-sass
  gem 'bootstrap-sass' 
  # Devise
- gem 'devise'
+ gem 'devise', '~> 4.3'
  # Figaro
  gem 'figaro', '1.0'
