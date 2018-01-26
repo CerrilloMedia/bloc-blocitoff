@@ -1,3 +1,4 @@
 $("#items").html('<%= j render partial: "items/items", locals: { user: @list.user, items: @list.items } %>');
 $('#items-quantity').html('<%= pluralize(@list.items.count, "item") %>');
 $('#item_body').val('');
+$('.completion-bg').progress();

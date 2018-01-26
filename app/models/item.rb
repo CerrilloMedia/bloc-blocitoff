@@ -14,7 +14,7 @@ class Item < ActiveRecord::Base
   end
   
   def limit_reached
-    if user != User.find_by_email('armando@cerrillomedia.org')
+    if user.email != ENV['ADMIN_EMAIL']
       list.items.size > 5 ? false : true
     end
   end

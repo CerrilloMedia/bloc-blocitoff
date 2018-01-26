@@ -146,22 +146,15 @@ body {
 
 .completion-bg {
     position: absolute;
-    height: 100%;
-    background: rgba(96, 160, 160, 0.1);
-    top: 0;
+    height: 12%;
+    background: rgb(175, 210, 209);
+    bottom: 0;
     left: 0;
-    z-index: 0;
-    // box-shadow: inset 0px -1px 0px rgba(96, 160, 160, 0.9);
 }
 
 #lists .panel-body {
     position: relative;
 }
-
-// .item-body * {
-//     margin: 0 !important;
-//     padding: 0 !important;
-// }
 
 .task-footer {
     font-size: .8em;
@@ -224,6 +217,9 @@ div[id^='item-'] {
 .list-panel {
     background: none !important;
     border: none;
+    .lead {
+        margin-bottom: 0px !important;
+    }
 }
 
 .list-task {

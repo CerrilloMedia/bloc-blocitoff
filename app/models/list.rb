@@ -14,13 +14,9 @@ class List < ActiveRecord::Base
   end
   
   def limit_reached
-    if user != User.find_by_email('armando@cerrillomedia.org')
+    if user.email != ENV['ADMIN_EMAIL']
       user.lists.size > 3 ? false : true
     end
-  end
-  
-  def compelted_lists
-    
   end
   
 end

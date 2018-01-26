@@ -1,12 +1,11 @@
 <%= form_for [user,list], html: {class: ''} do |f| %>
-        <div class="input-group col-xs-12"> 
-            <%= f.text_field :title, class: 'form-control text-center', placeholder: "#{type}list title", autofocus: autofocus %>
-            <span class="input-group-btn">
-                <%= submit_tag button, class: 'btn btn-secondary btn-success' %>
-                <% if type == 'update ' %>
-                    <%= link_to "cancel", :back, class: 'btn btn-danger' %>
-                <% end %>
-            </span>
-        </div>
-    
+    <div class="input-group col-xs-12"> 
+        <%= f.text_field :title, class: 'form-control text-center', placeholder: "#{type}list title", autofocus: autofocus %>
+        <span class="input-group-btn">
+            <%= submit_tag button, class: 'btn btn-secondary btn-success' %>
+            <% if type == 'update ' %>
+                <%= link_to "cancel", :back, class: 'btn btn-danger' %>
+            <% end %>
+        </span>
+    </div>
 <% end %>

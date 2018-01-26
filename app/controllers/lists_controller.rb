@@ -32,14 +32,18 @@ class ListsController < ApplicationController
     if authorize_user?(@user.id)
       
       @list = @user.lists.new(list_params)
+      
       if @list.save
           flash[:notice] = "list created successfully."
           redirect_to @list
       else
         flash[:alert] = "Error creating list. Please try again."
+        redirect_to user_lists_path
       end
+      
     else
       flash[:alert] = "You are not authorized for such an action."
+      redirect_to user_lists_path
     end
     
   end

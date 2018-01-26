@@ -18,7 +18,15 @@
                 <div class="col-xs-11 entry">
             <% end %>
                     <span class="<%= 'completed-task' if item.completed %>">
-                        <span class="nounderline"><%= item.body %></span>
+                        <span class="nounderline">
+                            <% if current_user == item.user %>
+                            <%= link_to edit_item_path(item) do %>
+                                <%= item.body %>
+                            <% end %>
+                            <% else %>
+                                <%= item.body %>
+                            <% end %>
+                        </span>
                     </span><br>
                     <%= render partial: 'layouts/timestamp', locals: { type: item } %>
                 </div>
