@@ -4,7 +4,7 @@ source 'https://rubygems.org'
  gem 'rails', '4.2.7.1'
  
  group :production do
-   gem 'pg'
+   gem 'pg', '~> 0.20'
    gem 'rails_12factor'
  end
  
@@ -17,7 +17,7 @@ source 'https://rubygems.org'
     # Shoulda uses Minitest and brings in Shoulda Context and Shoulda Matchers
     gem 'shoulda'
     
-    gem 'factory_girl_rails', '~> 4.0'
+    gem 'factory_bot', '~> 4.0'
     
     # Use Faker for create fake user data
     gem 'faker'
@@ -36,6 +36,6 @@ source 'https://rubygems.org'
  # bootstrap-sass
  gem 'bootstrap-sass' 
  # Devise
- gem 'devise', '~> 4.3'
+ gem 'devise'
  # Figaro
  gem 'figaro', '1.0'
