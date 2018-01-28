@@ -26,6 +26,7 @@ $gold: #F4E04D;
 body {
     background-color: #ecf0f1;
     font-weight: 300;
+    font-size: 16px;
 }
 
 .text-danger {
@@ -97,6 +98,7 @@ body {
             color: rgba(0,0,0,.1);
         }
     }
+    background: #60a0a0;
 }
 
 .panel-list-heading {
@@ -268,7 +270,7 @@ div[id^='item-'] {
         font-size: 1.5em;
     }
     .panel-header {
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
     .panel-body {
         padding: 5px !important;
