@@ -2,7 +2,6 @@
         <div id="item-<%= item.id %>" class="panel-body app-item-body panel-body-separator">
             <% if current_user == user %>
                 <div class="col-xs-1 pull-left text-center checkbox">
-                    
                     <div class="text-center nounderline">
                         <%= link_to item_path(id: item.id, request_type: 'toggle_completed'), remote: true, method: :patch do %>
                             <% if item.completed? %>
@@ -17,16 +16,16 @@
             <% else %>
                 <div class="col-xs-11 entry">
             <% end %>
-                    <span class="<%= 'completed-task' if item.completed %>">
-                        <span class="nounderline">
+                    <span class="<%= 'completed-task ' if item.completed %>entry-body nounderline">
+                        
                             <% if current_user == item.user %>
-                            <%= link_to edit_item_path(item) do %>
+                            <%= link_to edit_item_path(item), remote: true do %>
                                 <%= item.body %>
                             <% end %>
                             <% else %>
                                 <%= item.body %>
                             <% end %>
-                        </span>
+                        
                     </span><br>
                     <%= render partial: 'layouts/timestamp', locals: { type: item } %>
                 </div>

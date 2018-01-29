@@ -1,1 +1,2 @@
 $("#items").html('<%= j render partial: "items/items", locals: { user: @user, items: @items } %>');
+console.log("selecting #item-<%= @item.id %>");

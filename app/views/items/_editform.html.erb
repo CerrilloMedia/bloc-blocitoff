@@ -1,0 +1,3 @@
+<%= form_for item, remote: true do |f| %>
+  <%= f.text_field :body, class: 'form-control pull-left', value: "", placeholder: "#{item[:body]}", autofocus: true %>
+<% end %>

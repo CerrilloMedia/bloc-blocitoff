@@ -20,6 +20,7 @@ $grey: #777;
 $green: #60a0a0;
 $dark-blue: #335182;
 $teal: #60a0a0;
+$light-teal: #afd2d1;
 $gold: #F4E04D;
 
 // Devise users#edit
@@ -149,7 +150,7 @@ body {
 .completion-bg {
     position: absolute;
     height: 12%;
-    background: rgb(175, 210, 209);
+    background: linear-gradient(to right, $teal, $light-teal 75%);
     bottom: 0;
     left: 0;
 }
@@ -160,7 +161,7 @@ body {
 
 .task-footer {
     font-size: .8em;
-    // margin-left: .5em;
+    margin-left: .4em;
 }
 
 .timestamp-footer {
@@ -187,6 +188,28 @@ input[id='list_title']::-webkit-input-placeholder
 // input[id='list_title']:-ms-input-placeholder
 {
     color: white !important;
+}
+
+// updating list item#edit action
+form[id^="edit_item_"] .form-control {
+    font-size: 16px;
+    border: none;
+    box-shadow: none;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    height: inherit;
+    background: #d7e9e8;
+}
+
+.entry a {
+    padding-left: .3em !important;
+}
+
+.entry input {
+    padding: .4em .3em !important;
+    font-weight: 500;
 }
 
 input[id='list_title']:focus {

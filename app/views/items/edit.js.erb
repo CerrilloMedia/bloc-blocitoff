@@ -1,0 +1,25 @@
+var parent = $("#item-<%= @item.id %> .entry");
+<!--save old content if update doesn't occur-->
+var content = $(parent).html();
+console.log(parent.html());
+<!--render the form for this item within the current page -->
+parent.find('.entry-body').html('<%= j render partial: 'editform', locals: { item: @item }%>');
+<!--auto select text to edit-->
+var form = $("#edit_item_<%= @item.id %>");
+form.find(':input:last').select();
+<!-- find form input and if input-field is exited, replace form with original content  -->
+form.find(':input:last').on("focusout mouseout", function(event) {
+  parent.html(content);
+});
+<!--on successfull update -->
+form.on("submit", function(event) {
+    $.ajax({
+      type: "POST",
+      url: this.action,
+      data: $(this).serialize(),
+      success: function(response) {
+        console.log(response);
+      }
+    });
+  event.preventDefault();
+});

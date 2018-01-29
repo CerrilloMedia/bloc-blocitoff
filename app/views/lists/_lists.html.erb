@@ -17,7 +17,7 @@
             <% else %>
                 <div class="col-xs-12 entry">
             <% end %>
-                    <span class="<%= 'completed-task' if list.completed %>">
+                    <span class="entry-body <%= 'completed-task' if list.completed %>">
                     <% if current_user == list.user %>    
                         <%= link_to list, class: 'nounderline' do %>
                           <%= list.title %>

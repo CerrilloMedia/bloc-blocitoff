@@ -24,5 +24,6 @@ $(document).on('turbolinks:load', function() {
       $(this).animate({ width: percentage }, 200);
     });
   };
+  
   $('.completion-bg').progress();
 });

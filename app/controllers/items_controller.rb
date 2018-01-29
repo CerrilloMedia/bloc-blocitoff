@@ -19,6 +19,11 @@ class ItemsController < ApplicationController
   
   def edit
     @item = Item.find(params[:id])
+    @list = @item.list
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
   
   def update
@@ -42,9 +47,17 @@ class ItemsController < ApplicationController
       else
         @item.update_attributes(item_params)
         if @item.save
-          flash[:notice] = "item updated successfully."
+          respond_to do |format|
+            format.js {
+              render layout: false
+            }
+            format.html { 
+              flash[:notice] = "item updated successfully."
+            }
+          end
+          return
         else
-          flash[:alert] = "item updated successfully."
+          flash[:alert] = "item not updated, please try again."
         end
         redirect_to list_path(@item.list_id)
       end
