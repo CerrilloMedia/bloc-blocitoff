@@ -28,10 +28,7 @@ class ItemsController < ApplicationController
   
   def update
     @item = Item.find(params[:id])
-    
-    # to properly pass in variables to the _items partial within update.js.erb
     @items = Item.where('list_id = ?', @item.list_id)
-    @user  = @item.user
     
     if authorize_user?(@item.user_id)
       
@@ -51,8 +48,9 @@ class ItemsController < ApplicationController
             format.js {
               render layout: false
             }
-            format.html { 
+            format.html {
               flash[:notice] = "item updated successfully."
+              redirect_to list_path(@item.list_id)
             }
           end
           return
